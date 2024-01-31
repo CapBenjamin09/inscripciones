@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//RUTEO PARA INICIO DE SESIÓN
+Route::get('/login', [SessionController::class, 'index'])->name('session.index');
+Route::post('/login', [SessionController::class, 'store'])->name('session.store');
