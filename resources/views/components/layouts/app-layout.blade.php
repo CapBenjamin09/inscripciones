@@ -9,8 +9,16 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-sky-50">
-    <section>
+<main class="grid grid-cols-12">
+
+    <section class="col-span-2">
+        <x-layouts.navbar/>
+    </section>
+
+    <section class="col-span-10 py-5 px-2 pl-3">
         {{ $slot }}
     </section>
+
+</main>
 </body>
 </html>

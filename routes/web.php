@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
+Route::get('/dashboard', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
 
 //RUTEO PARA INICIO DE SESIÓN
-Route::get('/login', [SessionController::class, 'index'])->name('session.index');
-Route::post('/login', [SessionController::class, 'store'])->name('session.store');
+    Route::get('/login', [SessionController::class, 'index'])->name('session.index');
+    Route::post('/login', [SessionController::class, 'store'])->name('session.store');
