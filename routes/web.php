@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
-Route::get('/dashboard', function () {
+Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
 
