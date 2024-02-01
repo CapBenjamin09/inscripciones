@@ -25,12 +25,12 @@
 
 </main>
 
-<footer class=" pt-8 pb-6 mt-16 sticky bottom-0">
+<footer class="absolute bottom-0 w-full h-8">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap items-center md:justify-between justify-center">
             <div class="w-full md:w-6/12 px-4 mx-auto text-center">
                 <div class="text-sm text-gray-500  py-1">
-                    Made with <a href="https://www.creative-tim.com/product/soft-ui-dashboard-tailwind" class="text-gray-900 hover:text-gray-800" target="_blank">Soft UI</a> by <a href="https://www.creative-tim.com" class="text-gray-900 hover:text-gray-800" target="_blank"> Creative Tim</a>.
+                    Todos los derechos reservados &copy; UVG
                 </div>
             </div>
         </div>

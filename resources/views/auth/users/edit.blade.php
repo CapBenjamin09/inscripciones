@@ -1,6 +1,6 @@
 <x-layouts.app-layout>
 
-    <div class="container p-2 px-10 py-10 bg-white shadow-xl">
+    <div class="container p-2 px-10 py-10 bg-white rounded-lg shadow-xl">
 
         <div class="flex justify-center py-10">
             <img class="shadow-md w-20 h-20 p-2 rounded-2xl ring-2 ring-gray-300 bg-sky-200" src="{{ asset('img/editar.png') }}" alt="Bordered avatar">

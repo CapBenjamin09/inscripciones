@@ -11,10 +11,12 @@ use PhpParser\Node\Stmt\Return_;
 
 class DegreeController extends Controller
 {
-    public function index(){
-        $degrees = Degree::all();
+    public function index(Request $request){
 
-        return view('degrees.index', compact('degrees'));
+        $search = trim($request->search);
+        $degrees = Degree::where('name', 'LIKE', '%' . $search . '%')->orderBy('name', 'asc')->paginate(5);;
+
+        return view('degrees.index', compact('degrees', 'search'));
     }
 
     public function create(){

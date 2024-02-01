@@ -18,18 +18,25 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-//RUTEO DE GRADOS
-Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
-Route::resource('/users', UserController::class);
-Route::get('/dashboard', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
-Route::post('/degree', [DegreeController::class, 'store'])->name('degree.store');
-Route::get('/degree/create', [DegreeController::class, 'create'])->name('degree.create');
-Route::patch('degree/{degree}', [DegreeController::class, 'update'])->name('degree.update');
-Route::delete('/degree/{degree}', [DegreeController::class, 'destroy'])->name('degree.destroy');
-Route::get('/degree/{degree}/edit',[DegreeController::class, 'edit'])->name('degree.edit');
-
-//RUTEO PARA INICIO DE SESIÓN
+Route::middleware(['guest'])->group( function (){
+    //RUTEO PARA INICIO DE SESIÓN
     Route::get('/login', [SessionController::class, 'index'])->name('session.index');
     Route::post('/login', [SessionController::class, 'store'])->name('session.store');
+});
+
+Route::middleware(['auth'])->group( function () {
+    Route::resource('/degree', DegreeController::class);
+
+    Route::resource('/users', UserController::class);
+
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+});
+
+
+
+
+
+
+
