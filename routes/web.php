@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//RUTEO DE GRADOS
 Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
+Route::post('/degree', [DegreeController::class, 'store'])->name('degree.store');
+Route::get('/degree/create', [DegreeController::class, 'create'])->name('degree.create');
+Route::patch('degree/{degree}', [DegreeController::class, 'update'])->name('degree.update');
+Route::delete('/degree/{degree}', [DegreeController::class, 'destroy'])->name('degree.destroy');
+Route::get('/degree/{degree}/edit',[DegreeController::class, 'edit'])->name('degree.edit');
 
 //RUTEO PARA INICIO DE SESIÓN
 Route::get('/login', [SessionController::class, 'index'])->name('session.index');
