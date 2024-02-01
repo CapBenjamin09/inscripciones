@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('resources/css/app.css')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Incluye jQuery si es necesario -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
 <body class="bg-sky-50">
 <main class="grid grid-cols-12">
@@ -20,5 +24,20 @@
     </section>
 
 </main>
+
+<footer class=" pt-8 pb-6 mt-16 sticky bottom-0">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap items-center md:justify-between justify-center">
+            <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+                <div class="text-sm text-gray-500  py-1">
+                    Made with <a href="https://www.creative-tim.com/product/soft-ui-dashboard-tailwind" class="text-gray-900 hover:text-gray-800" target="_blank">Soft UI</a> by <a href="https://www.creative-tim.com" class="text-gray-900 hover:text-gray-800" target="_blank"> Creative Tim</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@yield('js')
+
 </body>
 </html>

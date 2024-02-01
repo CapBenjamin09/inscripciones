@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DegreeController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/degree', [DegreeController::class, 'index'])->name('degree.index');
+Route::resource('/users', UserController::class);
 Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');

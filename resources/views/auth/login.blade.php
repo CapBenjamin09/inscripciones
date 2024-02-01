@@ -1,4 +1,4 @@
-<x-layouts.app-layout>
+<x-layouts.app-layout-client>
     <!-- component -->
 
 
@@ -38,4 +38,4 @@
             </div>
         </div>
     </div>
-</x-layouts.app-layout>
+</x-layouts.app-layout-client>
