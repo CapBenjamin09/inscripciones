@@ -1,7 +1,7 @@
 <x-layouts.app-layout>
 <!-- component -->
 
-    <div class="container p-2 px-10 py-10 mx-auto bg-white shadow-xl">
+    <div class="container p-2 px-10 py-8 mx-auto bg-white shadow-xl">
         <h1 class="text-5xl font-bold text-black text-center my-4">Usuarios</h1>
         @if(session('status'))
             <div class="flex justify-start px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
@@ -112,7 +112,7 @@
             </tbody>
         </table>
     </div>
-        <div class="my-10">
+        <div class="my-8">
             {{$users->links()}}
         </div>
     </div>

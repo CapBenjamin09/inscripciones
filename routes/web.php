@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group( function () {
     Route::resource('/degree', DegreeController::class);
 
     Route::resource('/users', UserController::class);
+    Route::resource('/students', UserController::class);
+
 
     Route::get('/home', function () {
         return view('home');

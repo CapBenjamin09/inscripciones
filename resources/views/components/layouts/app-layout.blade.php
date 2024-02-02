@@ -25,7 +25,7 @@
 
 </main>
 
-<footer class="absolute bottom-0 w-full h-8">
+<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-sky-50 border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 h-4">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap items-center md:justify-between justify-center">
             <div class="w-full md:w-6/12 px-4 mx-auto text-center">
