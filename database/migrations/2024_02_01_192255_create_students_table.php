@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('student_personal_code');
+            $table->string('name');
+            $table->string('lastname');
+            $table->date('birthdate')->nullable();
+            $table->string('incharge')->nullable();
+            $table->string('phone_incharge')->nullable();
+            $table->text('address')->nullable();
+            $table->string('status_student');
+            $table->foreignId('degree_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
