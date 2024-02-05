@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
+use App\Models\ScheduleDetails;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -47,9 +48,23 @@ class ScheduleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Schedule $schedule)
-    {
-        //
+    public function show(Schedule $schedule, Request $request) {
+        $schedules = Schedule::all();
+        $mondays = ScheduleDetails::where('schedule_id', $schedule->id)->where('day', '=', 'Lunes')->orderBy('hour', 'asc')->get();
+        $tuesdays = ScheduleDetails::where('schedule_id', $schedule->id)->where('day', '=', 'Martes')->orderBy('hour', 'asc')->get();
+        $wednesdays = ScheduleDetails::where('schedule_id', $schedule->id)->where('day', '=', 'Miércoles')->orderBy('hour', 'asc')->get();
+        $thursdays = ScheduleDetails::where('schedule_id', $schedule->id)->where('day', '=', 'Jueves')->orderBy('hour', 'asc')->get();
+        $fridays = ScheduleDetails::where('schedule_id', $schedule->id)->where('day', '=', 'Viernes')->orderBy('hour', 'asc')->get();
+
+        return view('schedules.show', compact(
+            'schedule',
+            'schedules',
+            'mondays',
+            'tuesdays',
+            'wednesdays',
+            'thursdays',
+            'fridays'
+        ));
     }
 
     /**

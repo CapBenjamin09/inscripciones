@@ -2,7 +2,7 @@
 
     <div class="container mx-1 p-2 px-8 py-10 rounded-lg bg-white shadow-xl">
 
-        <div class="uppercase tracking-wide px-6 text-lg text-blue-500 font-semibold">HORARIO DE CLASE</div>
+        <div class="uppercase tracking-wide px-6 text-lg text-blue-500 font-semibold">Agregar por grado o docente</div>
 
         <form class="max-w-3xl mx-auto" method="POST" action="{{ route('schedules.store') }}">
         <div class="max-w-xl mx-auto mt-16 mb-16 flex w-full flex-col border rounded-lg bg-white p-8">

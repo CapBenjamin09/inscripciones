@@ -3,6 +3,7 @@
 use App\Http\Controllers\DegreeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ScheduleDetailController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::middleware(['auth'])->group( function () {
     Route::resource('/users', UserController::class);
     Route::resource('/students', UserController::class);
     Route::resource('/schedules', ScheduleController::class);
+    Route::resource('/scheduleDetails', ScheduleDetailController::class);
+
 
 
     Route::get('/home', function () {

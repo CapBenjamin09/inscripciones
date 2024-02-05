@@ -5,9 +5,16 @@
     <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden pt-8">
         <div class="md:flex">
             <div class="p-8">
-                <div class="uppercase tracking-wide px-6 text-lg text-blue-500 font-semibold">HORARIOS DE CLASE</div>
 
-                <div class="p-5 pt-5 grid grid-cols-6 gap-4">
+{{--                PRIMER BLOQUE--}}
+                <div class="px-5">
+                    <div class="relative mb-5">
+                        <div class="uppercase tracking-wide text-lg text-blue-500 font-semibold">HORARIOS DE CLASE</div>
+                    </div>
+                </div>
+
+{{--                SEGUNDO BLOQUE--}}
+                <div class="px-5 grid grid-cols-6 gap-10">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative mt-1 col-start-1 col-end-3">
                         <form action="{{ route('schedules.index') }}" method="get" class="flex justify-between">
@@ -20,15 +27,29 @@
                                           clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input type="text" id="search" name="search" value="{{ $search }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Search for items"/>
+                            <input type="text" id="table-search" name="search" value="{{ $search }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Búsqueda por grado o docente"/>
                         </form>
                     </div>
 
-                    <div class="col-end-7 col-span-1 px-5 py-1">
-                        <a href="{{ route('schedules.create') }}">
-                            <button type="submit" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
-                                Agregar </button>
-                        </a>
+                    <div class="col-end-7 col-span-2 px-5">
+
+                        <div class="relative inline-block text-left mx-4">
+                            <button id="dropdown-btn" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 relative z-10">
+                                Selecciona una opción
+                                <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M7.293 5.293a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 7.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div id="dropdown-menu" class="hidden origin-top-right absolute right-30 mt-2 w-62 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-btn">
+                                <a href="{{ route('schedules.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Agregar horario por grado o docente</a>
+                                <a href="{{ route('scheduleDetails.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Agregar curso a horario</a>
+                                <a href="{{ route('scheduleDetails.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Ver todos los cursos agregados</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -81,7 +102,7 @@
                                 <p class="mb-1 mx-5">{{$schedule->degree}}</p>
                             </div>
                             <!-- More link -->
-                            <a href="#" class="flex-shrink-0 flex items-center justify-center text-indigo-600 w-10 h-10 rounded-full bg-gradient-to-b from-indigo-50 to-indigo-100 hover:from-white hover:to-indigo-50 focus:outline-none focus-visible:from-white focus-visible:to-white transition duration-150 ml-2" >
+                            <a href="{{ route('schedules.show', $schedule->id) }}" class="flex-shrink-0 flex items-center justify-center text-indigo-600 w-10 h-10 rounded-full bg-gradient-to-b from-indigo-50 to-indigo-100 hover:from-white hover:to-indigo-50 focus:outline-none focus-visible:from-white focus-visible:to-white transition duration-150 ml-2" >
                                 <span class="block font-bold"><span class="sr-only">Ver</span> -></span>
                             </a>
                         </div>
@@ -97,9 +118,29 @@
             </div>
 </section>
 
+{{--    Funciones js--}}
     @section('js')
 
-        @if(session('eliminar') == 'ok')
+{{--        Dropdown (para lista de opciones)--}}
+
+        <script>
+            $(document).ready(function () {
+                // Mostrar u ocultar el menú desplegable al hacer clic en el botón
+                $('#dropdown-btn').on('click', function () {
+                    $('#dropdown-menu').toggleClass('hidden');
+                });
+
+                // Ocultar el menú desplegable si se hace clic fuera de él
+                $(document).on('click', function (event) {
+                    if (!$(event.target).closest('#dropdown-btn').length && !$(event.target).closest('#dropdown-menu').length) {
+                        $('#dropdown-menu').addClass('hidden');
+                    }
+                });
+            });
+        </script>
+
+{{--            Alerta confirmación para eliminar un registro--}}
+    @if(session('eliminar') == 'ok')
             <script>
                 Swal.fire({
                     title: "¡Eliminado!",
