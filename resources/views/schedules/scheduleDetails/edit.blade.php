@@ -34,7 +34,7 @@
                         @foreach($schedules as $schedule)
                         @if($schedule->id == $schedule->schedule_id)
                         @else
-                            <option selected value="{{ $schedule->id }}">{{ $schedule->degree }}</option>
+                            <option selected value="{{ $schedule->id }}">{{ $schedule->assignment }}</option>
                         @endif
                         @endforeach
                     </select>
@@ -54,6 +54,21 @@
                     <p class="text-red-800 my-1 rounded-lg text-sm px-3">{{ $message }}</p>
                     @enderror
                 </div>
+
+                {{-- Inicia --}}
+                <div class="m-4">
+                    <input type="checkbox" id="mostrarCampo" {{ $scheduleDetail->degree ? 'checked' : '' }}>
+                    Agregar grado (seleccionar este campo si es un horario para docente)
+                </div>
+                    <div class="m-4 {{ $scheduleDetail->degree ? '' : 'hidden' }}" id="campoInput">
+                        <label for="dato">Ingrese dato:</label>
+                        <input type="text" id="dato" name="degree" class="border rounded p-2" placeholder="(ej. 1ro Básico B)" value="{{ $scheduleDetail->degree }}">
+                            @error('degree')
+                            <p class="text-red-800 my-1 rounded-lg text-sm px-3">{{ $message }}</p>
+                            @enderror
+                    </div>
+                {{-- Finaliza --}}
+
                 <div class="mb-4">
                     <label for="teacher" class="text-sm leading-7 text-gray-600">Docente</label>
                     <input type="text" id="teacher" name="teacher" value="{{ $scheduleDetail->teacher }}" class="w-full resize-none rounded border border-gray-300 bg-white py-2 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
@@ -77,5 +92,29 @@
         </div>
 
     </div>
+
+
+    @section('js')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('mostrarCampo');
+                const campoInput = document.getElementById('campoInput');
+
+                if (checkbox.checked) {
+                    campoInput.classList.remove('hidden');
+                } else {
+                    campoInput.classList.add('hidden');
+                }
+
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        campoInput.classList.remove('hidden');
+                    } else {
+                        campoInput.classList.add('hidden');
+                    }
+                });
+            });
+        </script>
+    @endsection
 
 </x-layouts.app-layout>

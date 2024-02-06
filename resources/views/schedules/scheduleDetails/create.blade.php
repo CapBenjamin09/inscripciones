@@ -29,9 +29,9 @@
 
                 <div class="mb-4">
                     <label for="degree" class="text-sm leading-7 text-gray-600">Grado o Docente</label>
-                    <select id="degree" name="schedule_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="degree" name="schedule_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @foreach($schedules as $schedule)
-                        <option selected value="{{ $schedule->id }}">{{ $schedule->degree }}</option>
+                        <option selected value="{{ $schedule->id }}">{{ $schedule->assignment }}</option>
                     @endforeach
                     </select>
                 </div>
@@ -50,6 +50,20 @@
                     <p class="text-red-800 my-1 rounded-lg text-sm px-3">{{ $message }}</p>
                     @enderror
                 </div>
+                {{--                Inicia--}}
+                <div class="m-4">
+                    <input type="checkbox" id="mostrarCampo">
+                    Agregar grado (seleccionar este campo si es un horario para docente)
+                </div>
+
+                <div class="m-4 hidden" id="campoInput">
+                    <label for="dato">Ingrese dato:</label>
+                    <input type="text" id="dato" name="degree" class="border rounded p-2" placeholder="(ej. 1ro Básico B)">
+                    @error('degree')
+                    <p class="text-red-800 my-1 rounded-lg text-sm px-3">{{ $message }}</p>
+                    @enderror
+                </div>
+                {{--                Finaliza--}}
                 <div class="mb-4">
                     <label for="teacher" class="text-sm leading-7 text-gray-600">Docente</label>
                     <input type="text" id="teacher" name="teacher" class="w-full resize-none rounded border border-gray-300 bg-white py-2 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
@@ -73,5 +87,22 @@
         </div>
 
     </div>
+
+    @section('js')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('mostrarCampo');
+
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        document.getElementById('campoInput').classList.remove('hidden');
+                    } else {
+                        document.getElementById('campoInput').classList.add('hidden');
+                    }
+                });
+            });
+
+        </script>
+    @endsection
 
 </x-layouts.app-layout>

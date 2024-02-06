@@ -16,8 +16,8 @@
                 <input type="text" id="title" name="title" class="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
             </div>
             <div class="mb-4">
-                <label for="degree" class="text-sm leading-7 text-gray-600">Grado o Docente</label>
-                <input type="text" id="degree" name="degree" class="w-full resize-none rounded border border-gray-300 bg-white py-2 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
+                <label for="assignment" class="text-sm leading-7 text-gray-600">Grado o Docente</label>
+                <input type="text" id="assignment" name="assignment" class="w-full resize-none rounded border border-gray-300 bg-white py-2 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
             </div>
             <button type="submit" class="rounded border-0 bg-indigo-500 py-2 my-2 px-6 text-lg text-white hover:bg-indigo-600 focus:outline-none">
                 Guardar

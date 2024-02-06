@@ -13,6 +13,7 @@ class ScheduleDetails extends Model
         'day',
         'hour',
         'course',
+        'degree',
         'teacher',
         'schedule_id',
     ];

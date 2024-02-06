@@ -11,7 +11,7 @@ class ScheduleDetailController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->search);
-        $schedulesDetails = ScheduleDetails::where('course', 'LIKE', '%' . $search . '%')->orderBy('day', 'asc')->paginate(5);
+        $schedulesDetails = ScheduleDetails::where('course', 'LIKE', '%' . $search . '%')->orderBy('created_at', 'desc')->paginate(10);
 
         return view('schedules.scheduleDetails.index', compact('schedulesDetails', 'search'));
     }
@@ -36,6 +36,7 @@ class ScheduleDetailController extends Controller
             'day' => ['required'],
             'hour' => ['required', 'min:2', 'max:50'],
             'course' => ['required', 'min:2', 'max:50'],
+            'degree' => ['min:2', 'max:50'],
             'teacher' => ['required', 'min:2', 'max:50'],
             'schedule_id' => ['']
         ]);
@@ -44,9 +45,11 @@ class ScheduleDetailController extends Controller
             'day' => $request->day,
             'hour' => $request->hour,
             'course' => $request->course,
+            'degree' => $request->degree,
             'teacher' => $request->teacher,
             'schedule_id'=> $request->schedule_id
         ]);
+
         //
         return redirect()->route('scheduleDetails.index')->with('status', 'Se ha creado correctamente!');
     }
@@ -76,6 +79,7 @@ class ScheduleDetailController extends Controller
         $scheduleDetail->day = $request->day;
         $scheduleDetail->hour = $request->hour;
         $scheduleDetail->course = $request->course;
+        $scheduleDetail->degree = $request->degree;
         $scheduleDetail->teacher = $request->teacher;
         $scheduleDetail->schedule_id = $request->schedule_id;
 

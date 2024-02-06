@@ -99,7 +99,7 @@
                         <div class="flex items-center justify-between whitespace-normal">
                             <!-- Paragraph -->
                             <div class="max-w-md text-indigo-100">
-                                <p class="mb-1 mx-5">{{$schedule->degree}}</p>
+                                <p class="mb-1 mx-5">{{$schedule->assignment}}</p>
                             </div>
                             <!-- More link -->
                             <a href="{{ route('schedules.show', $schedule->id) }}" class="flex-shrink-0 flex items-center justify-center text-indigo-600 w-10 h-10 rounded-full bg-gradient-to-b from-indigo-50 to-indigo-100 hover:from-white hover:to-indigo-50 focus:outline-none focus-visible:from-white focus-visible:to-white transition duration-150 ml-2" >
@@ -113,7 +113,7 @@
     </div>
         @endforeach
 
-            <div class="my-8">
+            <div class="my-8 flex justify-center">
                 {{$schedules->links()}}
             </div>
 </section>

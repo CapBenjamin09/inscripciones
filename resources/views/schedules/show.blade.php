@@ -8,7 +8,7 @@
 
                 <div class="p-5 pt-5 grid grid-cols-6 gap-4">
                     <div class="relative mt-1 col-start-1 col-end-3">
-                        <div class="uppercase tracking-wide px-5 text-lg text-blue-500 font-semibold">{{ $schedule->degree }}</div>
+                        <div class="uppercase tracking-wide px-5 text-lg text-blue-500 font-semibold">{{ $schedule->assignment }}</div>
                     </div>
 
                     <div class="col-end-7 col-span-1 px-5 py-1">
@@ -37,6 +37,7 @@
             <tr>
                 <th class="py-3 px-4 text-left font-medium text-gray-600">Hora</th>
                 <th class="py-3 px-4 text-left font-medium text-gray-600">Curso</th>
+                <th class="py-3 px-4 text-left font-medium text-gray-600">Grado</th>
                 <th class="py-3 px-4 text-left font-medium text-gray-600">Docente</th>
             </tr>
             </thead>
@@ -46,6 +47,7 @@
             <tr>
                 <td class="py-3 px-4 text-left font-medium ">{{ $monday->hour }}</td>
                 <td class="py-3 px-4 text-left ">{{ $monday->course }}</td>
+                <td class="py-3 px-4 text-left ">{{ $monday->degree }}</td>
                 <td class="py-3 px-4 text-left ">{{ $monday->teacher }}</td>
             </tr>
             @endforeach

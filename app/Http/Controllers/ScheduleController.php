@@ -14,7 +14,7 @@ class ScheduleController extends Controller
     public function index(Request $request)
     {
         $search = trim($request->search);
-        $schedules = Schedule::where('degree', 'LIKE', '%' . $search . '%')->orderBy('title', 'asc')->paginate(4);
+        $schedules = Schedule::where('assignment', 'LIKE', '%' . $search . '%')->orderBy('title', 'asc')->paginate(4);
 
         return view('schedules.index', compact('schedules', 'search'));
     }
@@ -34,12 +34,12 @@ class ScheduleController extends Controller
     {
         $this->validate($request, [
             'title' => ['required', 'min:2', 'max:50'],
-            'degree' => ['required', 'min:2', 'max:50'],
+            'assignment' => ['required', 'min:2', 'max:50'],
         ]);
 
         Schedule::create([
             'title' => $request->title,
-            'degree' => $request->degree
+            'assignment' => $request->assignment
         ]);
 
         return redirect()->route('schedules.index')->with('status', 'Se ha creado correctamente!');
@@ -81,7 +81,7 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $schedule->title = $request->title;
-        $schedule->degree = $request->degree;
+        $schedule->assignment = $request->assignment;
 
         $schedule->update();
         return redirect()->route('schedules.index')->with('status', 'ok!');

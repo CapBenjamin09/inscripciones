@@ -54,7 +54,10 @@
                     Docente
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Grado o Docente
+                    Grado
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Asignación de horario
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
@@ -90,7 +93,10 @@
                         {{ $schedulesDetail->teacher }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {{ $schedulesDetail->schedule->degree}}
+                        {{ $schedulesDetail->degree }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {{ $schedulesDetail->schedule->assignment}}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
                         <a href="{{ route('scheduleDetails.edit', $schedulesDetail->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
@@ -110,7 +116,7 @@
         </table>
     </div>
 
-    <div class="mx-5 mr-3 grid grid-cols-6 gap-10">
+    <div class="mx-5 mb-12 mr-3 grid grid-cols-6 gap-10">
         <div class="mx-8 col-start-1 col-end-4">
             {{$schedulesDetails->links()}}
         </div>
@@ -124,64 +130,6 @@
         </div>
     </div>
 
-{{--    BLOQUES--}}
-    <section id="features" class="container mx-auto px-4 space-y-6 bg-slate-50  md:py-8 lg:py-8">
-
-        <div class="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-
-            <div
-                class="relative overflow-hidden rounded-lg border-2 border-blue-700 bg-white select-none hover:shadow hover:shadow-blue-400 p-2">
-                <div class="flex h-[180px] flex-col items-center rounded-md p-6">
-                    <img src="{{ asset('img/lunes.png') }}" class="h-24 w-24">
-                    <div class="space-y-2">
-                        <h3 class="font-bold px-2">Lunes</h3>
-                    </div>
-                </div>
-
-            </div>
-            <div
-                class="relative overflow-hidden rounded-lg border-2 border-blue-700 bg-white select-none hover:shadow hover:shadow-blue-400 p-2">
-                <div class="flex h-[180px] flex-col items-center rounded-md p-6">
-                    <img src="{{ asset('img/martes.png') }}" class="h-24 w-24">
-                    <div class="space-y-2">
-                        <h3 class="font-bold px-2">Martes</h3>
-                    </div>
-                </div>
-
-            </div>
-            <div
-                class="relative overflow-hidden rounded-lg border-2 border-blue-700 bg-white select-none hover:shadow hover:shadow-blue-400 p-2">
-                <div class="flex h-[180px] flex-col items-center rounded-md p-6">
-                    <img src="{{ asset('img/miercoles.png') }}" class="h-24 w-24">
-                    <div class="space-y-2">
-                        <h3 class="font-bold px-2">Miércoles</h3>
-                    </div>
-                </div>
-
-            </div>
-            <div
-                class="relative overflow-hidden rounded-lg border-2 border-blue-700 bg-white select-none hover:shadow hover:shadow-blue-400 p-2">
-                <div class="flex h-[180px] flex-col items-center rounded-md p-6">
-                    <img src="{{ asset('img/jueves.png') }}" class="h-24 w-24">
-                    <div class="space-y-2">
-                        <h3 class="font-bold px-2">Jueves</h3>
-                    </div>
-                </div>
-
-            </div>
-            <div
-                class="relative overflow-hidden rounded-lg border-2 border-blue-700 bg-white select-none hover:shadow hover:shadow-blue-400 p-2">
-                <div class="flex h-[180px] flex-col items-center rounded-md p-6">
-                    <img src="{{ asset('img/viernes.png') }}" class="h-24 w-24">
-                    <div class="space-y-2">
-                        <h3 class="font-bold px-2">Viernes</h3>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
 
     @section('js')
     {{--            Alerta confirmación para eliminar un registro--}}

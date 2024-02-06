@@ -17,6 +17,6 @@ class Schedule extends Model
 
     public function schedule_details(): HasMany
     {
-        return $this->hasMany(SchedulesDetails::class);
+        return $this->hasMany(ScheduleDetails::class);
     }
 }
