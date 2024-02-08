@@ -33,6 +33,13 @@
 
 {{--    DATA TABLE--}}
     <div class="container mx-auto px-6 rounded-xl shadow-md mt-8 mb-5 sm:px-6 lg:px-8 py-8 bg-white">
+
+            @if(session('status'))
+                <div class="flex justify-center px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
         <table id="example" class="table-auto w-full pt-8">
             <thead>
             <tr>
@@ -103,7 +110,7 @@
         <script>
             Swal.fire({
                 title: "¡Eliminado!",
-                text: "El usuario se eliminó con éxito.",
+                text: "El registro se eliminó con éxito.",
                 icon: "success"
             });
         </script>

@@ -35,7 +35,7 @@ class ScheduleDetailController extends Controller
             'day' => ['required'],
             'hour' => ['required', 'min:2', 'max:50'],
             'course' => ['required', 'min:2', 'max:50'],
-            'degree' => ['min:2', 'max:50'],
+            'degree' => [''],
             'teacher' => ['required', 'min:2', 'max:50'],
             'schedule_id' => ['']
         ]);
@@ -50,7 +50,7 @@ class ScheduleDetailController extends Controller
         ]);
 
         //
-        return redirect()->route('scheduleDetails.index')->with('status', 'Se ha creado correctamente!');
+        return redirect()->route('scheduleDetails.index')->with('status', '¡Su registro ha sido creado con éxito!');
     }
 //
 //    /**
@@ -83,7 +83,7 @@ class ScheduleDetailController extends Controller
         $scheduleDetail->schedule_id = $request->schedule_id;
 
         $scheduleDetail->update();
-        return redirect()->route('scheduleDetails.index')->with('status', 'ok!');
+        return redirect()->route('scheduleDetails.index')->with('status', '¡Su registro se ha editado con éxito!');
     }
 //
 //    /**

@@ -57,9 +57,13 @@
         </div>
     </div>
 
-
-
     <section class="flex flex-col justify-center antialiased  text-gray-600 p-4 py-8">
+
+        @if(session('status'))
+            <div class="flex justify-center px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
         @foreach($schedules as $schedule)
 
@@ -123,7 +127,9 @@
 {{--    Funciones js--}}
     @section('js')
 
-{{--        Dropdown (para lista de opciones)--}}
+
+
+            {{--        Dropdown (para lista de opciones)--}}
 
         <script>
             $(document).ready(function () {
@@ -146,7 +152,7 @@
             <script>
                 Swal.fire({
                     title: "¡Eliminado!",
-                    text: "El usuario se eliminó con éxito.",
+                    text: "El registro se eliminó con éxito.",
                     icon: "success"
                 });
             </script>

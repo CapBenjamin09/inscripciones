@@ -42,7 +42,7 @@ class ScheduleController extends Controller
             'assignment' => $request->assignment
         ]);
 
-        return redirect()->route('schedules.index')->with('status', 'Se ha creado correctamente!');
+        return redirect()->route('schedules.index')->with('status', '¡Su registro ha sido creado con éxito!');
     }
 
     /**
@@ -84,7 +84,7 @@ class ScheduleController extends Controller
         $schedule->assignment = $request->assignment;
 
         $schedule->update();
-        return redirect()->route('schedules.index')->with('status', 'ok!');
+        return redirect()->route('schedules.index')->with('status', '¡Su registro se ha editado con éxito!');
     }
 
     /**

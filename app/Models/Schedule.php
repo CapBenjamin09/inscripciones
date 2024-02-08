@@ -12,7 +12,7 @@ class Schedule extends Model
 
     protected $fillable = [
         'title',
-        'degree'
+        'assignment'
     ];
 
     public function schedule_details(): HasMany
