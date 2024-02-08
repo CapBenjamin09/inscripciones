@@ -57,6 +57,8 @@
         </div>
     </div>
 
+
+
     <section class="flex flex-col justify-center antialiased  text-gray-600 p-4 py-8">
 
         @foreach($schedules as $schedule)

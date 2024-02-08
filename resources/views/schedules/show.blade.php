@@ -65,6 +65,7 @@
             <tr>
                 <th class="py-3 px-4 text-left font-medium text-gray-600">Hora</th>
                 <th class="py-3 px-4 text-left font-medium text-gray-600">Curso</th>
+                <th class="py-3 px-4 text-left font-medium text-gray-600">Grado</th>
                 <th class="py-3 px-4 text-left font-medium text-gray-600">Docente</th>
             </tr>
             </thead>
@@ -74,6 +75,7 @@
                 <tr>
                     <td class="py-3 px-4 text-left font-medium text-gray-600">{{ $tuesday->hour }}</td>
                     <td class="py-3 px-4 text-left">{{ $tuesday->course }}</td>
+                    <td class="py-3 px-4 text-left ">{{ $tuesday->degree }}</td>
                     <td class="py-3 px-4 text-left">{{ $tuesday->teacher }}</td>
                 </tr>
             @endforeach
@@ -91,6 +93,7 @@
                 <tr>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Hora</th>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Curso</th>
+                    <th class="py-3 px-4 text-left font-medium text-gray-600">Grado</th>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Docente</th>
                 </tr>
                 </thead>
@@ -100,6 +103,7 @@
                     <tr>
                         <td class="py-3 px-4 text-left font-medium text-gray-600">{{ $wednesday->hour }}</td>
                         <td class="py-3 px-4 text-left">{{ $wednesday->course }}</td>
+                        <td class="py-3 px-4 text-left ">{{ $wednesday->degree }}</td>
                         <td class="py-3 px-4 text-left">{{ $wednesday->teacher }}</td>
                     </tr>
                 @endforeach
@@ -117,6 +121,7 @@
                 <tr>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Hora</th>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Curso</th>
+                    <th class="py-3 px-4 text-left font-medium text-gray-600">Grado</th>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Docente</th>
                 </tr>
                 </thead>
@@ -126,6 +131,7 @@
                     <tr>
                         <td class="py-3 px-4 text-left font-medium text-gray-600">{{ $thursday->hour }}</td>
                         <td class="py-3 px-4 text-left">{{ $thursday->course }}</td>
+                        <td class="py-3 px-4 text-left ">{{ $thursday->degree }}</td>
                         <td class="py-3 px-4 text-left">{{ $thursday->teacher }}</td>
                     </tr>
                 @endforeach
@@ -143,6 +149,7 @@
                 <tr>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Hora</th>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Curso</th>
+                    <th class="py-3 px-4 text-left font-medium text-gray-600">Grado</th>
                     <th class="py-3 px-4 text-left font-medium text-gray-600">Docente</th>
                 </tr>
                 </thead>
@@ -152,6 +159,7 @@
                     <tr>
                         <td class="py-3 px-4 text-left font-medium text-gray-600">{{ $friday->hour }}</td>
                         <td class="py-3 px-4 text-left">{{ $friday->course }}</td>
+                        <td class="py-3 px-4 text-left ">{{ $friday->degree }}</td>
                         <td class="py-3 px-4 text-left">{{ $friday->teacher }}</td>
                     </tr>
                 @endforeach

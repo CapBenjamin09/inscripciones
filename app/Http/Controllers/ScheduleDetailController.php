@@ -10,10 +10,9 @@ class ScheduleDetailController extends Controller
 {
     public function index(Request $request)
     {
-        $search = trim($request->search);
-        $schedulesDetails = ScheduleDetails::where('course', 'LIKE', '%' . $search . '%')->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('schedules.scheduleDetails.index', compact('schedulesDetails', 'search'));
+        $schedulesDetails = scheduleDetails::all();
+        return view('schedules.scheduleDetails.index', compact('schedulesDetails'));
     }
 
     /**
