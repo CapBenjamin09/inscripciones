@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DegreeController;
+use App\Http\Controllers\FilesController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegistrationsController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -26,10 +28,12 @@ Route::middleware(['guest'])->group( function (){
 });
 
 Route::middleware(['auth'])->group( function () {
+    Route::get('/files/{path}', FilesController::class);
     Route::resource('/degree', DegreeController::class);
 
     Route::resource('/users', UserController::class);
     Route::resource('/students', StudentController::class);
+    Route::resource('/registrations', RegistrationsController::class);
 
 
     Route::get('/home', function () {

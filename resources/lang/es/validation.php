@@ -154,6 +154,8 @@ return [
         'incharge' => 'encargado',
         'phone_incharge' => 'teléfono de encargado',
         'address' => 'dirección',
+        'cycle' => 'ciclo',
+        'voucher_record' => 'comprobante de pago',
     ],
 
 ];

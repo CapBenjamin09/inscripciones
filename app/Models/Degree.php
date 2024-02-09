@@ -19,4 +19,9 @@ class Degree extends Model
     {
         return $this->hasMany(Student::class);
     }
+
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registrations::class);
+    }
 }

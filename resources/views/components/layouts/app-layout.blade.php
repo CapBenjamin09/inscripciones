@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Incluye jQuery si es necesario -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    @stack('scripts-registrations')
+    @stack('scripts-datatable')
 
 </head>
 <body class="bg-sky-50">

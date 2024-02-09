@@ -107,7 +107,6 @@
                 <p class="mb-0.5">Regresar</p>
             </div>
             </a>
-
         </div>
     </div>
 
