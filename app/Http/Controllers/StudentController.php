@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Degree;
+use App\Models\Record;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -49,7 +50,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('students.show', compact('student'));
+        $records = Record::where('student_id', $student->id)->get();
+        return view('students.show', compact('student', 'records'));
     }
 
     /**

@@ -1,7 +1,7 @@
 <x-layouts.app-layout>
     <div class="container px-10 pt-8 pb-16 my-14 mx-auto bg-white shadow-xl">
         <div class="flex justify-center py-10">
-            <img class="shadow-md w-20 h-20 p-2 rounded-2xl ring-2 ring-gray-300 bg-sky-200" src="{{ asset('img/add_student.png') }}" alt="Bordered avatar">
+            <img class="shadow-md w-20 h-20 p-2 rounded-2xl ring-2 ring-gray-300 bg-sky-200" src="https://cdn.discordapp.com/attachments/1123116066168635392/1205700875553734676/4427980-200.png?ex=65d95371&is=65c6de71&hm=4ce74081d014b40e77806b7d4ff3fcf9393f0fe4aaaf3e5f9247d05076bc9bc1&" alt="Bordered avatar">
             <h1 class="text-5xl font-bold text-black text-center my-4">&nbsp; Información del estudiante</h1>
         </div>
         <div class="flex">
@@ -98,6 +98,65 @@
             </div>
         </div>
         </div>
+{{--   EXPEDIENTE     --}}
+        <div>
+            <div class="my-6">
+                <h1 class="text-5xl font-bold text-black text-center my-4">Expediente</h1>
+            </div>
+
+            <div class="p-1 flex flex-wrap items-center justify-center">
+                @if($records->first() != null)
+                    @foreach($records as $record)
+                    <div class="flex-shrink-0 m-6 relative overflow-hidden bg-gray-500 border h-84 w-1/3 rounded-lg shadow-lg">
+                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                             style="transform: scale(1.5); opacity: 0.1;">
+                            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                        </svg>
+                        <div class="relative pt-10 px-10 flex items-center justify-center">
+                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
+                                 style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
+                            </div>
+                            @if(pathinfo($record->file, PATHINFO_EXTENSION) == 'pdf')
+                                <img class="relative w-40" src="https://media.discordapp.net/attachments/1123116066168635392/1205395153225908224/pdf.png?ex=65d836b7&is=65c5c1b7&hm=01e02c08060a1804ed2f6b937c25667360cda05af7569b2e0b29aa8ce5efcb88&=&format=webp&quality=lossless&width=546&height=671" alt="">
+                            @else
+                                <img class="relative w-40 h-44" src="{{ asset($record->file) }}" alt="">
+                            @endif
+                        </div>
+                        <div class="relative text-white px-6 pb-6 mt-6">
+                            <span class="block opacity-75 -mb-1">{{ \Carbon\Carbon::parse($record->created_at)->format('Y') }}</span>
+                            <div class="flex justify-between">
+                                <span class="block font-semibold text-xl">{{ $record->name }}</span>
+
+                            </div>
+                            <div class="flex justify-center">
+                                <a download="" target="_blank" href="{{ asset($record->file) }}" class="block mt-4 w-32 justify-center bg-gray-900 rounded-xl text-white hover:bg-gray-700 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    </svg>
+                                    &nbsp; Descargar
+                                </a>
+                                <form class="ml-4 formulario-eliminar" action="{{ route('records.destroy', $record) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button  class="block mt-4 w-32 justify-center bg-red-600 rounded-xl text-white text-xs font-bold px-3 hover:bg-red-500 py-2 leading-none flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                        </svg>
+                                        &nbsp; Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <p class="mt-16">No hay archivos para mostrar</p>
+                @endif
+            </div>
+
+        </div>
+
         <div class="mt-8 flex flex-row-reverse">
             <a href="{{ route('students.index')  }}">
             <div class="bg-blue-500 w-30 h-12 flex rounded-lg align-middle text-center text-white items-center p-2.5 my-auto hover:bg-blue-600 border-red-300 cursor-pointer">
@@ -110,6 +169,40 @@
         </div>
     </div>
 
+    @section('js')
 
+        @if(session('eliminar') == 'ok')
+            <script>
+                Swal.fire({
+                    title: "¡Eliminado!",
+                    text: "El archivo se eliminó con éxito.",
+                    icon: "success"
+                });
+            </script>
+        @endif
+        <script>
+
+            $('.formulario-eliminar').submit(function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: "¿Está seguro?",
+                    text: "El archivo se eliminará de manera permanente!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Sí, eliminar!",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        this.submit();
+                    }
+                });
+            });
+
+        </script>
+    @endsection
 
 </x-layouts.app-layout>

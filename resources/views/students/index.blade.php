@@ -1,97 +1,54 @@
 <x-layouts.app-layout>
     <!-- component -->
 
-    <div class="container p-2 px-10 py-8 mx-auto bg-white shadow-xl">
-        <h1 class="text-5xl font-bold text-black text-center my-4">Estudiantes</h1>
+    <div class="container p-2 px-10 mt-16 py-8 mx-auto bg-white shadow-xl">
+
         @if(session('status'))
             <div class="flex justify-start px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
                 {{ session('status') }}
             </div>
         @endif
 
-        <div class="p-3 pt-8 grid grid-cols-6 gap-4">
-            <label for="table-search" class="sr-only">Search</label>
-            <div class="relative mt-1 col-start-1 col-end-3">
-                <form action="{{ route('students.index') }}" method="get" class="flex justify-between">
-                    @csrf
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                  clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <input type="text" id="search" name="search" value="{{ $search }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Search for items"/>
-                </form>
-            </div>
+        <div class="p-3 pb-10 grid grid-cols-6 gap-4">
+            <h1 class="text-5xl font-bold text-sky-600 text-center my-4">Estudiantes</h1>
+            <div class="col-span-2 col-end-9 px-5 my-auto">
 
-            <div class="col-end-7 col-span-1 px-5 py-1">
-                <a href="{{ route('students.create') }}">
-                    <button type="submit" class="flex text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ">
-                            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                <div class="relative inline-block text-left mx-4">
+                    <button id="dropdown-btn" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 relative z-10">
+                        Selecciona una opción
+                        <svg class="ml-2 -mr-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M7.293 5.293a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 7.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5z" clip-rule="evenodd" />
                         </svg>
-                        Agregar
                     </button>
-                </a>
+                </div>
+
+                <div id="dropdown-menu" class="hidden origin-top-right absolute right-30 mt-2 w-62 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-btn">
+                        <a href="{{ route('students.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Agregar alumno</a>
+                        <a href="{{ route('records.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Agregar expediente a alumno</a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="p-6 px-0">
-            <table class="mt-4 w-full min-w-max table-auto text-left">
+        <div class="container mt-2 mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <table id="example" class="table-auto w-full">
                 <thead>
                 <tr>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                        <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
-                            Código de Alumno
-                        </p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                        <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
-                            Nombre Completo
-                        </p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                        <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
-                            Estado de Alumno
-                        </p>
-                    </th>
-                    <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                        <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
-                            Acciones
-                        </p>
-                    </th>
+                    <th class="px-4 py-2">Código de Alumno</th>
+                    <th class="px-4 py-2">Alumno</th>
+                    <th class="px-4 py-2">Estado</th>
+                    <th class="px-4 py-2">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($students as $student)
                     <tr>
-
-                        <td class="p-4 border-b border-blue-gray-50">
-                            <div class="flex items-center gap-3">
-                                <div class="flex flex-col">
-                                    <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                        {{$student->student_personal_code}}
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="p-4 border-b border-blue-gray-50">
-                            <div class="flex flex-col">
-                                <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-70">
-                                    {{$student->name . ' ' . $student->lastname}}
-                                </p>
-                            </div>
-                        </td>
-
-                        <td class="p-4 border-b border-blue-gray-50">
-                            <p class="block uppercase antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                                {{$student->status_student}}
-                            </p>
-                        </td>
-                        <td class="p-4 border-b border-blue-gray-50">
+                        <td class="border px-4 py-2">{{$student->student_personal_code}}</td>
+                        <td class="border px-4 py-2">{{$student->name . ' ' . $student->lastname}}</td>
+                        <td class="border px-4 py-2">{{$student->status_student}}</td>
+                        <td class="border px-4 py-2">
                             <div class="flex flex-row">
                                 <a href="{{ route('students.show', $student) }}">
                                     <button class="relative align-middle select-none px-2 font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30" type="button">
@@ -123,15 +80,17 @@
                         </td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
-            <div class="my-8">
-                {{$students->links()}}
-            </div>
         </div>
 
     </div>
+
+    @push('scripts-datatable')
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    @endpush
 
     @section('js')
 
@@ -145,6 +104,25 @@
             </script>
         @endif
         <script>
+            $(document).ready(function () {
+                // Mostrar u ocultar el menú desplegable al hacer clic en el botón
+                $('#dropdown-btn').on('click', function () {
+                    $('#dropdown-menu').toggleClass('hidden');
+                });
+
+                // Ocultar el menú desplegable si se hace clic fuera de él
+                $(document).on('click', function (event) {
+                    if (!$(event.target).closest('#dropdown-btn').length && !$(event.target).closest('#dropdown-menu').length) {
+                        $('#dropdown-menu').addClass('hidden');
+                    }
+                });
+            });
+
+            $(document).ready(function() {
+                $('#example').DataTable({
+                    // Add any customization options here
+                });
+            });
 
             $('.formulario-eliminar').submit(function(e) {
                 e.preventDefault();

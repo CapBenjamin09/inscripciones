@@ -1,15 +1,14 @@
 <x-layouts.app-layout>
 
     <div class="container p-2 px-10 py-8 mx-auto bg-white shadow-xl">
-
-
+        @if(session('status'))
+            <div class="flex justify-start px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
         <div class="p-3 pt-8 grid grid-cols-6 gap-4 items-center">
-            <h1 class="text-5xl font-bold text-sky-600 text-black text-left my-4">Inscripciones</h1>
-            @if(session('status'))
-                <div class="flex justify-start px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
+            <h1 class="text-5xl font-bold text-sky-600 text-left my-4">Inscripciones</h1>
+
             <div class="col-end-7 col-span-1 px-5 py-1">
                 <a href="{{ route('registrations.create') }}">
                     <button type="submit" class="flex text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">

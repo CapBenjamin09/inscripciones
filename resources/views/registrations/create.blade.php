@@ -67,37 +67,6 @@
         }
     };
 
-    var i = 0;
-    $('#add').click(function () {
-        i++;
-        $('#table').append(
-            '<tr>' +
-            '<td>' +
-            '<input type="text" name="inputs['+i+'][name]" id="name" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />'+
-            '</td>' +
-            '<td>'+
-            '<div class="flex items-center space-x-6">'+
-            '<div class="shrink-0 ml-1">'+
-            '<img id="preview_img" class="h-16 w-16 object-cover rounded-full" src="https://cdn.icon-icons.com/icons2/2570/PNG/512/image_icon_153794.png" alt="Current profile photo" />'+
-            '</div>'+
-            '<label class="block">'+
-            '<span class="sr-only">Choose profile photo</span>'+
-            '<input type="file" onchange="loadFile(event)" name="inputs['+i+'][file_record]" class="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-100 "/>'+
-            '</label>'+
-            '</div>'+
-            '</td>'+
-            '<td class="">'+
-            '<button class="bg-red-600 h-12 w-10 rounded-lg hover:bg-red-500 remove-table-row" type="button">'+
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mx-auto text-white">'+
-            '<path fill-rule="evenodd" d="M4.25 12a.75.75 0 0 1 .75-.75h14a.75.75 0 0 1 0 1.5H5a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />'+
-            '</svg>'+
-            '</button>'+
-            '</td>');
-    });
-
-    $(document).on('click', '.remove-table-row', function () {
-        $(this).parents('tr').remove();
-    });
 
 </script>
 

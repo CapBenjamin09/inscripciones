@@ -71,29 +71,34 @@
 
             <div class="p-1 flex flex-wrap items-center justify-center">
 
-                @if(pathinfo($registration->voucher_record, PATHINFO_EXTENSION) == 'jpg' || pathinfo($registration->voucher_record, PATHINFO_EXTENSION) == 'png' || pathinfo($registration->voucher_record, PATHINFO_EXTENSION) == 'jpeg')
-                    <div class="flex-shrink-0 relative overflow-hidden bg-blue-500 rounded-lg max-w-screen-xl shadow-lg">
-                        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
-                             style="transform: scale(1.5); opacity: 0.1;">
-                            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
-                            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
-                        </svg>
-                        <div class="relative pt-10 px-10 flex items-center justify-center">
-                            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
-                                 style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
+                @if($registration->voucher_record != null)
+                    @if(pathinfo($registration->voucher_record, PATHINFO_EXTENSION) == 'jpg' || pathinfo($registration->voucher_record, PATHINFO_EXTENSION) == 'png' || pathinfo($registration->voucher_record, PATHINFO_EXTENSION) == 'jpeg')
+                        <div class="flex-shrink-0 relative overflow-hidden bg-blue-500 rounded-lg max-w-screen-xl shadow-lg">
+                            <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                                 style="transform: scale(1.5); opacity: 0.1;">
+                                <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                                <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                            </svg>
+                            <div class="relative pt-10 px-10 flex items-center justify-center">
+                                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
+                                     style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
+                                </div>
+                                <img class="relative w-auto rounded-lg h-96 w-96" src="{{ asset($registration->voucher_record) }}" alt="">
                             </div>
-                            <img class="relative w-auto rounded-lg h-96 w-96" src="{{ asset($registration->voucher_record) }}" alt="">
-                        </div>
-                        <div class="relative text-white px-6 pb-6 mt-6">
-                            <div class="flex flex-row-reverse">
-                                <a target="_blank" href="{{ asset($registration->voucher_record) }}" class="block bg-white rounded-full text-blue-500 hover:text-blue-700 text-xs font-bold px-3 py-2 leading-none flex items-center">Ver imagen</a>
+                            <div class="relative text-white px-6 pb-6 mt-6">
+                                <div class="flex flex-row-reverse">
+                                    <a target="_blank" href="{{ asset($registration->voucher_record) }}" class="block bg-white rounded-full text-blue-500 hover:text-blue-700 text-xs font-bold px-3 py-2 leading-none flex items-center">Ver imagen</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @else
+                        <div>
+                            <embed src="{{ asset( $registration->voucher_record) }}" type="application/pdf" class="w-[1000px] h-[800px]">
+                        </div>
+                    @endif
+
                 @else
-                    <div>
-                        <embed src="{{ asset( $registration->voucher_record) }}" type="application/pdf" class="w-[1000px] h-[800px]">
-                    </div>
+                    <p class="mt-10">No hay un archivo para mostrar</p>
                 @endif
             </div>
             <div class="mt-8 flex flex-row-reverse">
