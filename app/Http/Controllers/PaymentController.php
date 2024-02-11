@@ -58,7 +58,7 @@ class PaymentController extends Controller
     public function edit(Payment $payment)
     {
         $students = Student::all();
-        return view('payments.edit', compact('students'));
+        return view('payments.edit', compact('students',  'payment'));
     }
 
     /**
