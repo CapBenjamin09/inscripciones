@@ -47,6 +47,6 @@ class DegreeController extends Controller
     public function destroy(Degree $degree) {
         $degree->delete();
 
-        return back()->with('delete', 'Se ha eliminado un registro!');
+        return back()->with('eliminar', 'ok');
     }
 }
