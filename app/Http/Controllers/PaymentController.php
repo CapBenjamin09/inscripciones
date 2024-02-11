@@ -7,6 +7,8 @@ use App\Models\Payment;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PaymentController extends Controller
 {
@@ -47,9 +49,11 @@ class PaymentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Payment $payment)
+    public function show($id)
     {
-        //
+        $payment = Payment::findOrFail($id);
+        // Puedes pasar la información necesaria al modal
+        return view('payments.show', compact('payment'));
     }
 
     /**
@@ -74,6 +78,12 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $image_path = str_replace('files/', '',$payment->voucher);
+        if (Storage::disk('files')->exists($image_path)) {
+            Storage::disk('files')->delete($image_path);
+        }
+        $payment->delete();
+
+        return redirect()->route('payments.index')->with('eliminar', 'ok');
     }
 }

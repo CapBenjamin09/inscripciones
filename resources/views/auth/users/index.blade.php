@@ -5,13 +5,14 @@
 
         <div class="p-3 pt-10 grid grid-cols-6 gap-4">
             <div class="relative mt-1 col-start-1 col-end-3">
-                <h1 class="text-5xl font-bold text-black text-center">Usuarios</h1>
+                <h1 class="text-5xl font-bold text-sky-600">Usuarios</h1>
             </div>
 
             <div class="col-end-7 col-span-1 px-5 py-4">
                 <a href="{{ route('users.create') }}">
-                <button type="submit" class="text-white bg-sky-800 hover:bg-sky-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
-                    Agregar </button>
+                    <button type="submit" class="text-white bg-sky-800 hover:bg-sky-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
+                        Agregar
+                    </button>
                 </a>
             </div>
         </div>
