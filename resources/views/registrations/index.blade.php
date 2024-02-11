@@ -1,6 +1,6 @@
 <x-layouts.app-layout>
 
-    <div class="container p-2 px-10 py-8 mx-auto bg-white shadow-xl">
+    <div class="container p-2 px-10 mt-16 py-8 mx-auto bg-white shadow-xl">
         @if(session('status'))
             <div class="flex justify-start px-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
                 {{ session('status') }}

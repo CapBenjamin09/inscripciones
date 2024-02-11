@@ -1,6 +1,6 @@
 <x-layouts.app-layout>
 
-    <div class="container p-2 px-10 py-8 mx-auto bg-white shadow-xl">
+    <div class="container p-2 px-10 py-8 mt-16 mx-auto bg-white shadow-xl">
 
         <div class="p-3 pt-10 grid grid-cols-6 gap-4">
             <div class="relative mt-1 col-start-1 col-end-3 pb-10">
