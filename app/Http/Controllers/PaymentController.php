@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePaymentRequest;
 use App\Models\Payment;
+use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -12,7 +15,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('payments.index');
+        $payments = Payment::all();
+//        $students = Student::all();
+
+        return view('payments.index', compact('payments'));
     }
 
     /**
@@ -20,15 +26,22 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('payments.create');
+        $students = Student::all();
+        return view('payments.create', compact('students'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePaymentRequest $request)
     {
-        //
+        $validate = $request->validated();
+        $validate['voucher'] = $request->file('voucher')->store('files');
+        $validate['date_payment'] = Carbon::now();
+
+        Payment::create($validate);
+
+        return redirect()->route('payments.index')->with('status', 'Se ha agregado una mensualidad correctamente!');
     }
 
     /**
@@ -44,7 +57,8 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        return view('payments.edit');
+        $students = Student::all();
+        return view('payments.edit', compact('students'));
     }
 
     /**

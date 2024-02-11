@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('month');
+            $table->text('comments');
+            $table->date('date_payment');
+            $table->string('buyer_number');
+            $table->string('voucher');
             $table->timestamps();
         });
     }

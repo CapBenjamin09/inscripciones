@@ -156,6 +156,8 @@ return [
         'address' => 'dirección',
         'cycle' => 'ciclo',
         'voucher_record' => 'comprobante de pago',
+        'buyer_number' => 'número de comprobante',
+        'voucher' => 'comprobante de pago',
     ],
 
 ];
