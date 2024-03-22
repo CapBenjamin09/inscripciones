@@ -23,7 +23,6 @@ class StoreDegreeRequest extends FormRequest
     {
         return [
             'name' => 'required|max:75',
-            'cost_monthly' => 'required|decimal:0,2',
         ];
     }
 }

@@ -21,15 +21,22 @@
                 <thead>
                 <tr>
                     <th class="px-4 py-2">Nombre</th>
-                    <th class="px-4 py-2">Costo</th>
                     <th class="px-4 py-2">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($degrees as $degree)
                     <tr>
-                        <td class="border px-4 py-2">{{ $degree->name }}</td>
-                        <td class="border px-4 py-2"><b>Q.</b> {{ number_format($degree->cost_monthly, 2) }}</td>
+                        <td class="border px-4 py-2">
+                            <div class="flex">
+                            {{ $degree->name }} &nbsp;
+                            <a href="{{  route('degree.show', $degree) }}" class="text-sm items-center text-blue-400 hover:text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 items-center hover:text-blue-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                            </a>
+                            </div>
+                        </td>
                         <td class="border px-4 py-2">
                             <div class="flex flex-row">
                                 <a href="{{ route('degree.edit', $degree) }}">

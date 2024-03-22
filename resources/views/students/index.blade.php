@@ -36,8 +36,8 @@
             <table id="example" class="table-auto w-full">
                 <thead>
                 <tr>
-                    <th class="px-4 py-2">Código de Alumno</th>
                     <th class="px-4 py-2">Alumno</th>
+                    <th class="px-4 py-2">Grado</th>
                     <th class="px-4 py-2">Estado</th>
                     <th class="px-4 py-2">Acciones</th>
                 </tr>
@@ -45,9 +45,21 @@
                 <tbody>
                 @foreach($students as $student)
                     <tr>
-                        <td class="border px-4 py-2">{{$student->student_personal_code}}</td>
-                        <td class="border px-4 py-2">{{$student->name . ' ' . $student->lastname}}</td>
-                        <td class="border px-4 py-2">{{$student->status_student}}</td>
+                        <td class="border px-4 py-2">{{$student->student_personal_code . ' ' . $student->name . ' ' . $student->lastname}}</td>
+                        <td class="border px-4 py-2">{{ $student->degree->name }}</td>
+                        <td class="border px-4 py-2">
+                            @if($student->status_student == 'activo')
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {{ strtoupper($student->status_student) }}
+                                </span>
+                            @else
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                    {{ strtoupper($student->status_student) }}
+                                </span>
+                            @endif
+                        </td>
                         <td class="border px-4 py-2">
                             <div class="flex flex-row">
                                 <a href="{{ route('students.show', $student) }}">

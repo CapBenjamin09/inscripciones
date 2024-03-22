@@ -1,7 +1,7 @@
 <x-layouts.app-layout>
     <div class="container px-10 pt-8 pb-16 my-14 mx-auto bg-white shadow-xl">
         <div class="flex justify-center py-10">
-            <img class="shadow-md w-20 h-20 p-2 rounded-2xl ring-2 ring-gray-300 bg-sky-200" src="https://cdn.discordapp.com/attachments/1123116066168635392/1205700875553734676/4427980-200.png?ex=65d95371&is=65c6de71&hm=4ce74081d014b40e77806b7d4ff3fcf9393f0fe4aaaf3e5f9247d05076bc9bc1&" alt="Bordered avatar">
+            <img class="shadow-md w-20 h-20 p-2 rounded-2xl ring-2 ring-gray-300 bg-sky-200" src="{{ asset('img/graduacion.png') }}" alt="Bordered avatar">
             <h1 class="text-5xl font-bold text-black text-center my-4">&nbsp; Información del estudiante</h1>
         </div>
         <div class="flex">
@@ -118,9 +118,9 @@
                                  style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">
                             </div>
                             @if(pathinfo($record->file, PATHINFO_EXTENSION) == 'pdf')
-                                <img class="relative w-40" src="https://media.discordapp.net/attachments/1123116066168635392/1205395153225908224/pdf.png?ex=65d836b7&is=65c5c1b7&hm=01e02c08060a1804ed2f6b937c25667360cda05af7569b2e0b29aa8ce5efcb88&=&format=webp&quality=lossless&width=546&height=671" alt="">
+                                <img class="relative w-40 " src="{{ asset('img/pdf.png') }}" alt="">
                             @else
-                                <img class="relative w-40 h-44" src="{{ asset($record->file) }}" alt="">
+                                <img class="relative w-40 h-44 rounded-lg" src="{{ asset($record->file) }}" alt="">
                             @endif
                         </div>
                         <div class="relative text-white px-6 pb-6 mt-6">
@@ -130,11 +130,12 @@
 
                             </div>
                             <div class="flex justify-center">
-                                <a download="" target="_blank" href="{{ asset($record->file) }}" class="block mt-4 w-32 justify-center bg-gray-900 rounded-xl text-white hover:bg-gray-700 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                <a href="{{ route('students.show-file', ['student' => $student, 'record' => $record]) }}" class="block mt-4 w-32 justify-center bg-gray-900 rounded-xl text-white hover:bg-gray-700 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
-                                    &nbsp; Descargar
+                                    &nbsp; Ver más
                                 </a>
                                 <form class="ml-4 formulario-eliminar" action="{{ route('records.destroy', $record) }}" method="POST">
                                     @csrf

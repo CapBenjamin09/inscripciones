@@ -22,8 +22,7 @@ class UpdateDegreeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:75',
-            'cost_monthly' => 'required|decimal:0,2',
+            'name' => 'required|max:75'
         ];
     }
 }

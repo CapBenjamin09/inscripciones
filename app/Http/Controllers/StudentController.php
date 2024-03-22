@@ -54,6 +54,11 @@ class StudentController extends Controller
         return view('students.show', compact('student', 'records'));
     }
 
+    public function showFile(Student $student, Record $record)
+    {
+        return view('students.show-file', compact('student', 'record'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

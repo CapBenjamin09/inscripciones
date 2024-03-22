@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group( function () {
 
     Route::resource('/users', UserController::class);
     Route::resource('/students', StudentController::class);
+    Route::get('/students/{student}/showFile/{record}', [StudentController::class, 'showFile'])->name('students.show-file');
     Route::resource('/registrations', RegistrationsController::class);
     Route::resource('/payments', PaymentController::class);
     Route::resource('/schedules', ScheduleController::class);

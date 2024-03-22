@@ -11,8 +11,7 @@ class Degree extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'cost_monthly'
+        'name'
     ];
 
     public function students(): HasMany
